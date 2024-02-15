@@ -29,7 +29,7 @@ else
     echo "You are root user"
 fi # fi means reverse of if, indicating condition end
 
-dnf install python36 gcc python3-devel -y
+dnf install python36 gcc python3-devel -y  &>> $LOGFILE
 VALIDATE $? "installing python"
 
 id roboshop
@@ -52,7 +52,8 @@ cd /app
 unzip -o /tmp/payment.zip &>> $LOGFILE
 VALIDATE $? "unzipping payment"
 
-pip3.6 install -r requirements.txt
+pip3.6 install -r requirements.txt  &>> $LOGFILE
+VALIDATE $? "installing dependencies"
 
 cp /home/centos/roboshop-shell/payment.service /etc/systemd/system/payment.service &>> $LOGFILE
 VALIDATE $? "copying payment service file"
