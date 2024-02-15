@@ -30,6 +30,7 @@ else
 fi # fi means reverse of if, indicating condition end
 
 dnf install python36 gcc python3-devel -y
+VALIDATE $? "installing python"
 
 id roboshop
 if [ $? -ne 0 ]
